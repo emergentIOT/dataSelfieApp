@@ -6,6 +6,23 @@
     <title>Data Selfie App</title>
 </head>
 <body>
+    <script>
+        //Get current location. 
+        if('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position);
+                const lat = position.coords.latitude;
+                const long = position.coords.longitude
+                document.getElementById("latitude").textContent = lat;
+                document.getElementById("longitude").textContent = long;
+            });
+        } else {
+            console.log("Not available");
+        }
+    </script>
+
+    <h3>Data Selfie App</h3>
+    <p><span id="latitude">&deg;</span><br/><span id="longitude">&deg;</span></p>
     
 </body>
 </html>
