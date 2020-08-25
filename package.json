@@ -1,0 +1,23 @@
+{
+  "name": "dataselfieapp",
+  "version": "1.0.0",
+  "description": "Data selfie app ",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emergentIOT/dataSelfieApp.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emergentIOT/dataSelfieApp/issues"
+  },
+  "homepage": "https://github.com/emergentIOT/dataSelfieApp#readme"
+}
