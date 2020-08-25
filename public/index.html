@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Selfie App</title>
+</head>
+<body>
+    <script>
+        //Get current location. 
+        if('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(async position => {
+                
+                const lat = position.coords.latitude;
+                const lang = position.coords.longitude
+                document.getElementById("latitude").textContent = lat;
+                document.getElementById("longitude").textContent = lang;
+
+                //Create a post request
+                const data = { lat, lang };
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                };
+               const response = await fetch('/api', options);
+               const dataReceived = await response.json();
+               console.log("Log from clinet side", dataReceived);
+
+            });
+        } else {
+            console.log("Not available");
+        }
+    </script>
+
+    <h3>Data Selfie App</h3>
+    <p><span id="latitude">&deg;</span><br/><span id="longitude">&deg;</span></p>
+    
+</body>
+</html>
