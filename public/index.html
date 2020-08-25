@@ -9,12 +9,26 @@
     <script>
         //Get current location. 
         if('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position);
+            navigator.geolocation.getCurrentPosition(async position => {
+                
                 const lat = position.coords.latitude;
-                const long = position.coords.longitude
+                const lang = position.coords.longitude
                 document.getElementById("latitude").textContent = lat;
-                document.getElementById("longitude").textContent = long;
+                document.getElementById("longitude").textContent = lang;
+
+                //Create a post request
+                const data = { lat, lang };
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                };
+               const response = await fetch('/api', options);
+               const dataReceived = await response.json();
+               console.log("Log from clinet side", dataReceived);
+
             });
         } else {
             console.log("Not available");
